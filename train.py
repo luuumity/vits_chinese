@@ -120,8 +120,13 @@ def run(rank, n_gpus, hps):
         eps=hps.train.eps,
     )
 
+    # 层冻结？
     # net_g.lock_post_encoder()
-    # utils.load_model("AISHELL3_G.pth", net_g)
+    
+    # 加载预训练的模型，用于微调。
+    # 为什么在这里？
+    utils.load_model("AISHELL3_G.pth", net_g)
+    utils.load_model("AISHELL3_D.pth", net_d)
 
     net_g = DDP(net_g, device_ids=[rank])
     net_d = DDP(net_d, device_ids=[rank])
