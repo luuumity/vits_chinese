@@ -16,7 +16,20 @@ https://github.com/PlayVoice/vits_chinese/releases/tag/v1.0
 ### AISHELL原训练数据下载
 http://www.openslr.org/93/
 
-## 数据预处理：
+### 项目环境搭建：（改过requirements.txt)
+```
+# 安装相关依赖：
+pip install -r requirements.txt
+
+# set up MAS对齐
+cd monotonic_align
+mkdir monotonic_align
+python setup.py build_ext --inplace
+ls monotonic_align
+%cd ..
+```
+
+## 微调前数据预处理：
 
 ### 0.自己的微调数据集放在 data/ 中
 ### 0.预处理前应先手动创建 vits_data/ 目录
