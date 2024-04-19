@@ -69,9 +69,9 @@ SJY003.wav 落红不是无情物，化作春泥更护花。
 SJY004.wav 所有的改变都是一种深思熟虑过后的奇迹。
 	suo3 you3 de5 gai3 bian4 dou1 shi4 yi1 zhong3 shen1 si1 shu2 lv4 guo4 hou4 de5 qi2 ji4
 ```
-### 3.使用bert预处理
+### 3.使用bert预处理（默认前20条数据作为 valid 集，20条以后的作为 train 集。所以数据要够，或者改代码。）
 ```
-# 默认是前20条数据作为 valid 集，20以后的作为 train 集，所以数据要够，或者改代码。
+# 默认前20条数据作为 valid 集，20条以后的作为 train 集。所以数据要够，或者改代码。
 python prep_bert.py --conf configs/bert_vits.json --data vits_data/
 ```
 
