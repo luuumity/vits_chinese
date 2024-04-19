@@ -1,5 +1,5 @@
 ## 本项目用于微调测试
-## 主要更改的逻辑是
+## 主要更改的逻辑是：
 ```
 bert_vits.json 中，"n_speakers" 改为 0 ，"gin_channels" 改为 0。
 train.py中，L124行，加入加载预训练模型的代码：
@@ -7,6 +7,7 @@ utils.load_model("AISHELL3_G.pth", net_g)
 utils.load_model("AISHELL3_D.pth", net_g)
 ```
 
+## 材料准备：
 ### 下载预训练vits模型
 https://github.com/PlayVoice/vits_chinese/releases/v4.0
 
