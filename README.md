@@ -13,28 +13,34 @@ python prep_resample.py --wav data/ --out vits_data/waves-16k
 file vits_data/waves-16k/SJY/SJY001.wav
 ```
 
-## 标注及格式规范化（原始文本在input.txt，输出到vits_data/labels.txt）
+## 标注及格式规范化
 ```
+# 原始文本请放在input.txt，默认输出到vits_data/labels.txt。
 python prep_pinyin.py
 ```
 
-- 原始标注
+- 原始文本格式（input.txt）
+⚠️注：原始文本请按照这个格式写： ”角色名(仅含字母)+数字+.wav  空格  内容（可含标点符号）“
 ```
-SSB00050001.wav	广 guang3 州 zhou1 女 nv3 大 da4 学 xue2 生 sheng1 登 deng1 山 shan1 失 shi1 联 lian2 四 si4 天 tian1 警 jing3 方 fang1 找 zhao3 到 dao4 疑 yi2 似 si4 女 nv3 尸 shi1
-SSB00050002.wav	尊 zhun1 重 zhong4 科 ke1 学 xue2 规 gui1 律 lv4 的 de5 要 yao1 求 qiu2
-SSB00050003.wav	七 qi1 路 lu4 无 wu2 人 ren2 售 shou4 票 piao4
+SJY001.wav 一帆风顺虽然令人羡慕，可是有的时候逆水行舟更让人钦佩。
+SJY002.wav 我们必须与其他生物共同分享我们的地球。
+SJY003.wav 落红不是无情物，化作春泥更护花。
+SJY004.wav 所有的改变都是一种深思熟虑过后的奇迹。
 ```
-- 规范标注
+- 拼音标注及格式规范化（labels.txt）
 ```
-SSB00050001.wav 广州女大学生登山失联四天警方找到疑似女尸
-	guang3 zhou1 nv3 da4 xue2 sheng1 deng1 shan1 shi1 lian2 si4 tian1 jing3 fang1 zhao3 dao4 yi2 si4 nv3 shi1
-SSB00050002.wav 尊重科学规律的要求
-	zhun1 zhong4 ke1 xue2 gui1 lv4 de5 yao1 qiu2
-SSB00050003.wav 七路无人售票
-	qi1 lu4 wu2 ren2 shou4 piao4
+SJY001.wav 一帆风顺虽然令人羡慕，可是有的时候逆水行舟更让人钦佩。
+	yi1 fan2 feng1 shun4 sui1 ran2 ling4 ren2 xian4 mu4 ke3 shi4 you3 de5 shi2 hou4 ni4 shui3 xing2 zhou1 geng4 rang4 ren2 qin1 pei4
+SJY002.wav 我们必须与其他生物共同分享我们的地球。
+	wo3 men5 bi4 xu1 yu3 qi2 ta1 sheng1 wu4 gong4 tong2 fen1 xiang3 wo3 men5 de5 di4 qiu2
+SJY003.wav 落红不是无情物，化作春泥更护花。
+	luo4 hong2 bu2 shi4 wu2 qing2 wu4 hua4 zuo4 chun1 ni2 geng4 hu4 hua1
+SJY004.wav 所有的改变都是一种深思熟虑过后的奇迹。
+	suo3 you3 de5 gai3 bian4 dou1 shi4 yi1 zhong3 shen1 si1 shu2 lv4 guo4 hou4 de5 qi2 ji4
 ```
-## 数据预处理
+## 使用bert预处理
 ```
+# 默认是前20条数据作为 valid 集，20以后的作为 train 集，所以数据要够，或者改代码。
 python prep_bert.py --conf configs/bert_vits.json --data vits_data/
 ```
 
