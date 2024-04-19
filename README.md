@@ -7,13 +7,14 @@ utils.load_model("AISHELL3_G.pth", net_g)
 utils.load_model("AISHELL3_D.pth", net_g)
 ```
 
-## AISHELL数据下载
+## 数据预处理：
+### AISHELL原训练数据下载
 http://www.openslr.org/93/
 
-## 自己的微调数据集可以放在 data/ 中
-## 预处理前应先手动创建 vits_data/ 目录
+### 0.自己的微调数据集放在 data/ 中
+### 0.预处理前应先手动创建 vits_data/ 目录
 
-## 1.重采样：
+### 1.重采样：
 ```
 # --wav 要写角色的父文件夹，这是由代码决定的。
 # waves-16k目录应该会自动创建。
@@ -22,7 +23,7 @@ python prep_resample.py --wav data/ --out vits_data/waves-16k
 file vits_data/waves-16k/SJY/SJY001.wav
 ```
 
-## 2.拼音标注及格式规范化
+### 2.拼音标注及格式规范化
 ```
 # 原始文本请放在input.txt，默认输出到vits_data/labels.txt。
 python prep_pinyin.py
@@ -47,7 +48,7 @@ SJY003.wav 落红不是无情物，化作春泥更护花。
 SJY004.wav 所有的改变都是一种深思熟虑过后的奇迹。
 	suo3 you3 de5 gai3 bian4 dou1 shi4 yi1 zhong3 shen1 si1 shu2 lv4 guo4 hou4 de5 qi2 ji4
 ```
-## 3.使用bert预处理
+### 3.使用bert预处理
 ```
 # 默认是前20条数据作为 valid 集，20以后的作为 train 集，所以数据要够，或者改代码。
 python prep_bert.py --conf configs/bert_vits.json --data vits_data/
@@ -73,7 +74,7 @@ AISHELL3原数据集会生成这样的：
 1|vits_data/waves-16k/SJY/SJY002.wav|vits_data/temps/SJY/SJY002.spec.pt|vits_data/berts/SJY/SJY002.wav.npy|sil ^ uo3 m en5 b i4 x v1 ^ v3 q i2 t a1 sh eng1 ^ u4 g ong4 t ong2 f en1 x iang3 ^ uo3 m en5 d e5 d i4 q iou2 sp sil
 1|vits_data/waves-16k/SJY/SJY003.wav|vits_data/temps/SJY/SJY003.spec.pt|vits_data/berts/SJY/SJY003.wav.npy|sil l uo4 h ong2 b u2 sh iii4 ^ u2 q ing2 ^ u4 sp h ua4 z uo4 ch uen1 n i2 g eng4 h u4 h ua1 sp sil
 ```
-## 数据调试
+### 数据调试
 ```
 python prep_debug.py
 ```
