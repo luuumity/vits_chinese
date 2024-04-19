@@ -2,11 +2,12 @@
 http://www.openslr.org/93/
 
 ## 自己的微调数据集可以放在data/中
+## 预处理前应先手动创建vits_data/目录
 
 ## 重采样：
 ```
-#（waves-16k目录会自动创建）
 # --wav 要写角色的父文件夹，这是由代码决定的。
+# waves-16k目录应该会自动创建。
 python prep_resample.py --wav data/ --out vits_data/waves-16k
 ```
 
