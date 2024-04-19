@@ -75,16 +75,16 @@ SJY004.wav 所有的改变都是一种深思熟虑过后的奇迹。
 python prep_bert.py --conf configs/bert_vits.json --data vits_data/
 ```
 
-打印信息，会过滤本项目不支持的**儿化音**
+- 打印信息，会过滤本项目不支持的**儿化音**
 
-生成 vits_data/speakers.txt
+- 生成 vits_data/speakers.txt
 ```
 AISHELL3数据集会生成这样的：
 {'SSB0005': 0, 'SSB0009': 1, 'SSB0011': 2..., 'SSB1956': 173}
 我的微调数据集会生成这样的：
 {'.DS_Store': 0, 'SJY': 1}
 ```
-生成 filelists
+- 生成 filelists
 ```
 AISHELL3原数据集会生成这样的：
 0|vits_data/waves-16k/SSB0005/SSB00050001.wav|vits_data/temps/SSB0005/SSB00050001.spec.pt|vits_data/berts/SSB0005/SSB00050001.npy|sil g uang3 zh ou1 n v3 d a4 x ve2 sh eng1 d eng1 sh an1 sh iii1 l ian2 s ii4 t ian1 j ing3 f ang1 zh ao3 d ao4 ^ i2 s ii4 n v3 sh iii1 sil
