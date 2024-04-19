@@ -7,13 +7,13 @@ utils.load_model("AISHELL3_G.pth", net_g)
 utils.load_model("AISHELL3_D.pth", net_g)
 ```
 
-## 下载预训练vits模型
+### 下载预训练vits模型
 https://github.com/PlayVoice/vits_chinese/releases/v4.0
 
-## 下载BERT韵律预测模型（文字->embedding）
+### 下载BERT韵律预测模型（文字->embedding）（放到bert/路径中）
 https://github.com/PlayVoice/vits_chinese/releases/tag/v1.0
 
-## AISHELL原训练数据下载
+### AISHELL原训练数据下载
 http://www.openslr.org/93/
 
 ## 数据预处理：
