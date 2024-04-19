@@ -4,6 +4,7 @@ import numpy as np
 import argparse
 import utils
 import random
+import re
 
 from bert import TTSProsody
 from bert.prosody_tool import is_chinese, pinyin_dict
@@ -80,7 +81,13 @@ if __name__ == "__main__":
         infosub = message.split(" ")
         fileidx = infosub[0]
         message = infosub[1]
-        speaker = fileidx[:7]
+        # speaker = fileidx[:7]
+        matches = re.match(r"([a-zA-z]+)(.*)", fileidx)
+        if matches:
+            # 通过正则匹配，获取字母段作为speaker。
+            speaker = matches.group(1)
+        else:
+            print("正则匹配出现错误！")
 
         os.makedirs(os.path.join(bert_path, speaker), exist_ok=True)
         os.makedirs(os.path.join(spec_path, speaker), exist_ok=True)
@@ -128,9 +135,12 @@ if __name__ == "__main__":
         char_embeds_path = os.path.join(bert_path, speaker, f"{fileidx}.npy")
         np.save(char_embeds_path, char_embeds, allow_pickle=False)
 
-        wave_file = os.path.join(wave_path, speaker, f"{fileidx}.wav")
-        spec_file = os.path.join(spec_path, speaker, f"{fileidx}.spec.pt")
+        # 更正格式识别，保证能找到wave_file，能保存正确的spec_file名。
+        wave_file = os.path.join(wave_path, speaker, fileidx)
+        # 去掉“.wav”
+        spec_file = os.path.join(spec_path, speaker, f"{fileidx[:-4]}.spec.pt")
         if not os.path.exists(wave_file):
+            print(f"where is your audio file ? Can't find {wave_file}")
             continue
         spec = get_spec(hps, wave_file)
         torch.save(spec, spec_file)
