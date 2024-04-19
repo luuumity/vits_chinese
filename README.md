@@ -30,6 +30,13 @@ ls monotonic_align
 %cd ..
 ```
 
+### 底模型推理测试
+```
+python vits_infer.py -c configs/bert_vits.json -m AISHELL3_G.pth -i 6
+```
+-i 为发音人序号，取值范围：0 ~ 173
+
+
 ## 微调前数据预处理：
 
 ### 0.自己的微调数据集放在 data/ 中
@@ -56,7 +63,6 @@ python prep_pinyin.py
 SJY001.wav 一帆风顺虽然令人羡慕，可是有的时候逆水行舟更让人钦佩。
 SJY002.wav 我们必须与其他生物共同分享我们的地球。
 SJY003.wav 落红不是无情物，化作春泥更护花。
-SJY004.wav 所有的改变都是一种深思熟虑过后的奇迹。
 ```
 - 拼音标注及格式规范化（labels.txt）
 ```
@@ -66,8 +72,6 @@ SJY002.wav 我们必须与其他生物共同分享我们的地球。
 	wo3 men5 bi4 xu1 yu3 qi2 ta1 sheng1 wu4 gong4 tong2 fen1 xiang3 wo3 men5 de5 di4 qiu2
 SJY003.wav 落红不是无情物，化作春泥更护花。
 	luo4 hong2 bu2 shi4 wu2 qing2 wu4 hua4 zuo4 chun1 ni2 geng4 hu4 hua1
-SJY004.wav 所有的改变都是一种深思熟虑过后的奇迹。
-	suo3 you3 de5 gai3 bian4 dou1 shi4 yi1 zhong3 shen1 si1 shu2 lv4 guo4 hou4 de5 qi2 ji4
 ```
 ### 3.使用bert预处理
 - ⚠️注：默认前20条数据作为 valid 集，20条以后的作为 train 集。所以数据要够，或者改代码。
@@ -82,6 +86,7 @@ python prep_bert.py --conf configs/bert_vits.json --data vits_data/
 AISHELL3数据集会生成这样的：
 {'SSB0005': 0, 'SSB0009': 1, 'SSB0011': 2..., 'SSB1956': 173}
 我的数据集会生成这样的：
+⚠️ 这里是否有隐患？
 {'.DS_Store': 0, 'SJY': 1}
 ```
 - 生成 filelists
@@ -106,10 +111,7 @@ python prep_debug.py
 python train.py -c configs/bert_vits.json -m bert_vits
 ```
 
+## 若容易过拟合，或音质明显较差，或难以收敛，尝试 add auxiliary data。
 
-## 底模型推理测试
-```
-python vits_infer.py -c configs/bert_vits.json -m AISHELL3_G.pth -i 6
-```
--i 为发音人序号，取值范围：0 ~ 173
+
 
