@@ -99,26 +99,16 @@ AISHELL3原数据集会生成这样的：
 python prep_debug.py
 ```
 
-## 启动训练
+## 启动训练（未测试）
 
 ```
-cd monotonic_align
-
-python setup.py build_ext --inplace
-
-cd -
-
 python train.py -c configs/bert_vits.json -m bert_vits
 ```
 
 
-## 推理测试
+## 底模型推理测试
 ```
 python vits_infer.py -c configs/bert_vits.json -m AISHELL3_G.pth -i 6
 ```
 -i 为发音人序号，取值范围：0 ~ 173
 
-## 训练的AISHELL3模型，使用小米K2社区开源的AISHELL3模型来初始化训练权重，以节约训练时间
-K2开源模型 https://huggingface.co/jackyqs/vits-aishell3-175-chinese/tree/main 下载模型
-
-K2在线试用 https://huggingface.co/spaces/k2-fsa/text-to-speech
