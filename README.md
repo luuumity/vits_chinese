@@ -81,7 +81,7 @@ python prep_bert.py --conf configs/bert_vits.json --data vits_data/
 ```
 AISHELL3数据集会生成这样的：
 {'SSB0005': 0, 'SSB0009': 1, 'SSB0011': 2..., 'SSB1956': 173}
-我的微调数据集会生成这样的：
+我的数据集会生成这样的：
 {'.DS_Store': 0, 'SJY': 1}
 ```
 - 生成 filelists
