@@ -9,11 +9,13 @@ http://www.openslr.org/93/
 # --wav 要写角色的父文件夹，这是由代码决定的。
 # waves-16k目录应该会自动创建。
 python prep_resample.py --wav data/ --out vits_data/waves-16k
+# 采样率检验（我自己的声音）：
+file vits_data/waves-16k/SJY/SJY001.wav
 ```
 
-## 标注规范化（lables.txt，名称不能改）
+## 标注及格式规范化（原始文本在input.txt，输出到vits_data/labels.txt）
 ```
-python prep_format_label.py --txt aishell-3/train/content.txt --out vits_data/lables.txt
+python prep_pinyin.py
 ```
 
 - 原始标注
