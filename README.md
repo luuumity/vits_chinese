@@ -7,9 +7,13 @@ utils.load_model("AISHELL3_G.pth", net_g)
 utils.load_model("AISHELL3_D.pth", net_g)
 ```
 
-## 数据预处理：
-### AISHELL原训练数据下载
+## 下载权重（预训练模型）
+AISHELL3_G.pth：https://github.com/PlayVoice/vits_chinese/releases/v4.0
+
+## AISHELL原训练数据下载
 http://www.openslr.org/93/
+
+## 数据预处理：
 
 ### 0.自己的微调数据集放在 data/ 中
 ### 0.预处理前应先手动创建 vits_data/ 目录
@@ -91,8 +95,6 @@ cd -
 python train.py -c configs/bert_vits.json -m bert_vits
 ```
 
-## 下载权重
-AISHELL3_G.pth：https://github.com/PlayVoice/vits_chinese/releases/v4.0
 
 ## 推理测试
 ```
