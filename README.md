@@ -54,7 +54,7 @@ SJY004.wav 所有的改变都是一种深思熟虑过后的奇迹。
 python prep_bert.py --conf configs/bert_vits.json --data vits_data/
 ```
 
-打印信息，在过滤本项目不支持的**儿化音**
+打印信息，会过滤本项目不支持的**儿化音**
 
 生成 vits_data/speakers.txt
 ```
