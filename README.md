@@ -1,10 +1,10 @@
 ## AISHELL数据下载
 http://www.openslr.org/93/
 
-## 自己的微调数据集可以放在data/中
-## 预处理前应先手动创建vits_data/目录
+## 自己的微调数据集可以放在 data/ 中
+## 预处理前应先手动创建 vits_data/ 目录
 
-## 重采样：
+## 1.重采样：
 ```
 # --wav 要写角色的父文件夹，这是由代码决定的。
 # waves-16k目录应该会自动创建。
@@ -13,13 +13,13 @@ python prep_resample.py --wav data/ --out vits_data/waves-16k
 file vits_data/waves-16k/SJY/SJY001.wav
 ```
 
-## 标注及格式规范化
+## 2.拼音标注及格式规范化
 ```
 # 原始文本请放在input.txt，默认输出到vits_data/labels.txt。
 python prep_pinyin.py
 ```
 
-- 原始文本格式（input.txt）
+- 原始文本样式（input.txt）
 ⚠️注：原始文本请按照这个格式写： ”角色名(仅含字母)+数字+.wav  空格  内容（可含标点符号）“
 ```
 SJY001.wav 一帆风顺虽然令人羡慕，可是有的时候逆水行舟更让人钦佩。
@@ -38,7 +38,7 @@ SJY003.wav 落红不是无情物，化作春泥更护花。
 SJY004.wav 所有的改变都是一种深思熟虑过后的奇迹。
 	suo3 you3 de5 gai3 bian4 dou1 shi4 yi1 zhong3 shen1 si1 shu2 lv4 guo4 hou4 de5 qi2 ji4
 ```
-## 使用bert预处理
+## 3.使用bert预处理
 ```
 # 默认是前20条数据作为 valid 集，20以后的作为 train 集，所以数据要够，或者改代码。
 python prep_bert.py --conf configs/bert_vits.json --data vits_data/
