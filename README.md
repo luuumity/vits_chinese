@@ -8,7 +8,7 @@ utils.load_model("AISHELL3_D.pth", net_g)
 ```
 
 ## 下载权重（预训练模型）
-AISHELL3_G.pth：https://github.com/PlayVoice/vits_chinese/releases/v4.0
+https://github.com/PlayVoice/vits_chinese/releases/v4.0
 
 ## AISHELL原训练数据下载
 http://www.openslr.org/93/
