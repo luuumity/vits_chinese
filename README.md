@@ -1,9 +1,13 @@
-## 数据下载
+## AISHELL数据下载
 http://www.openslr.org/93/
 
-## 采样率转换
+## 自己的微调数据集可以放在data/中
+
+## 重采样：
 ```
-python prep_resample.py --wav aishell-3/train/wav/ --out vits_data/waves-16k
+#（waves-16k目录会自动创建）
+# --wav 要写角色的父文件夹，这是由代码决定的。
+python prep_resample.py --wav data/ --out vits_data/waves-16k
 ```
 
 ## 标注规范化（lables.txt，名称不能改）
