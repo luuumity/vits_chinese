@@ -86,7 +86,7 @@ python prep_bert.py --conf configs/bert_vits.json --data vits_data/
 AISHELL3数据集会生成这样的：
 {'SSB0005': 0, 'SSB0009': 1, 'SSB0011': 2..., 'SSB1956': 173}
 我的数据集会生成这样的：
-⚠️ 这里是否有隐患？
+❓这里是否有隐患？
 {'.DS_Store': 0, 'SJY': 1}
 ```
 - 生成 filelists
@@ -100,7 +100,7 @@ AISHELL3原数据集会生成这样的：
 1|vits_data/waves-16k/SJY/SJY002.wav|vits_data/temps/SJY/SJY002.spec.pt|vits_data/berts/SJY/SJY002.wav.npy|sil ^ uo3 m en5 b i4 x v1 ^ v3 q i2 t a1 sh eng1 ^ u4 g ong4 t ong2 f en1 x iang3 ^ uo3 m en5 d e5 d i4 q iou2 sp sil
 1|vits_data/waves-16k/SJY/SJY003.wav|vits_data/temps/SJY/SJY003.spec.pt|vits_data/berts/SJY/SJY003.wav.npy|sil l uo4 h ong2 b u2 sh iii4 ^ u2 q ing2 ^ u4 sp h ua4 z uo4 ch uen1 n i2 g eng4 h u4 h ua1 sp sil
 ```
-### 数据调试
+### 4.数据调试
 ```
 python prep_debug.py
 ```
