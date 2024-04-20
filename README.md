@@ -106,9 +106,10 @@ AISHELL3原数据集会生成这样的：
 python prep_debug.py
 ```
 
-## 启动训练（输出默认都在log/路径下）（没做可视化啊）
+## 启动训练（输出默认都在log/路径下）
 
 ```
+# ❓train.py里明明好像有可视化代码，但colab上并没有唤起tensorboard，为什么？
 python train.py -c configs/bert_vits.json -m bert_vits
 ```
 
