@@ -46,7 +46,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     assert os.path.exists(os.path.join(args.data, "waves-16k"))
-    assert os.path.exists(os.path.join(args.data, "lables.txt"))
+    assert os.path.exists(os.path.join(args.data, "labels.txt"))
 
     speaker_map = get_spk_map(os.path.join(args.data, "waves-16k"))
     fout = open(os.path.join(args.data, "speakers.txt"), 'w', encoding='utf-8')
@@ -65,7 +65,7 @@ if __name__ == "__main__":
 
     prosody = TTSProsody("./bert", device)
 
-    fo = open(os.path.join(args.data, "lables.txt"), "r+", encoding='utf-8')
+    fo = open(os.path.join(args.data, "labels.txt"), "r+", encoding='utf-8')
     scrips = []
     while (True):
         try:
@@ -155,12 +155,17 @@ if __name__ == "__main__":
     for item in scrips:
         print(item, file=fout)
     fout.close()
+
+    # 默认以 1:4 的比例划分 valid 集 和 train 集。
+    # 整除，向下取整，前 1/5 给 valid 集，后 4/5 给 train 集。
+    Delimiter = len(scrips) // 5
+
     fout = open(f'./filelists/valid.txt', 'w', encoding='utf-8')
-    for item in scrips[:20]:
+    for item in scrips[:Delimiter]:
         print(item, file=fout)
     fout.close()
     fout = open(f'./filelists/train.txt', 'w', encoding='utf-8')
-    tmp = scrips[20:]
+    tmp = scrips[Delimiter:]
     random.shuffle(tmp)
     for item in tmp:
         print(item, file=fout)
