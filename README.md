@@ -8,7 +8,7 @@ utils.load_model("AISHELL3_D.pth", net_g)
 ```
 
 ## 材料准备：
-### 下载预训练vits模型
+### 下载预训练的vits模型（基于AISHELL多发言人训练）（放到项目目录下）
 https://github.com/PlayVoice/vits_chinese/releases/v4.0
 
 ### 下载BERT韵律预测模型（文字->embedding）（放到bert/路径中）
