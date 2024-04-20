@@ -39,7 +39,7 @@ python vits_infer.py -c configs/bert_vits.json -m AISHELL3_G.pth -i 6
 
 ## 微调前数据预处理：
 
-### 0.自己的微调数据集放在 data/ 中
+### 0.自己的微调数据集放在 data/SJY/ 中
 ### 0.预处理前应先手动创建 vits_data/ 目录
 
 ### 1.重采样：
