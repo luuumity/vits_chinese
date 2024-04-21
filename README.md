@@ -1,13 +1,15 @@
 ## 本项目用于微调测试
 ## 这次更改的逻辑是：
+
+- bert_vits.json 中，"n_speakers" 有几个设几个（包括辅助数据和自己真实数据） ，"gin_channels" 保留为 256。
+- log_interval和eval_interval分别为10和100。
+- train.py中，L124行，加入加载预训练模型的代码：
 ```
-bert_vits.json 中，"n_speakers" 有几个设几个（包括辅助数据和自己真实数据） ，"gin_channels" 保留为 256。
-log_interval和eval_interval分别为10和100。
-train.py中，L124行，加入加载预训练模型的代码：
 utils.load_model("AISHELL3_G.pth", net_g)
 utils.load_model("AISHELL3_D.pth", net_g)
-utils.py中，引用vits-fast-fine-tuning项目的方式，更改了load_checkpoint的代码。
 ```
+- utils.py中，引用vits-fast-fine-tuning项目的方式，更改了load_checkpoint的代码。
+
 
 ## 材料准备：
 ### 下载预训练的vits模型（基于AISHELL多发言人训练）（放到项目目录下）
