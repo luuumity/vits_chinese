@@ -115,8 +115,3 @@ python prep_debug.py
 python train.py -c configs/bert_vits.json -m bert_vits
 ```
 
-## 若容易过拟合，或音质明显较差，或难以收敛，尝试 add auxiliary data。
-
-- 直接混合辅助数据，并都当成“我”的方式不对，声音特色会被辅助数据盖过去。
-- 应该尝试vfft的思路，请见vfft分支。
-
