@@ -49,7 +49,9 @@ if __name__ == "__main__":
     assert os.path.exists(os.path.join(args.data, "waves-16k"))
     assert os.path.exists(os.path.join(args.data, "labels.txt"))
 
-    speaker_map = get_spk_map(os.path.join(args.data, "waves-16k"))
+    # speaker_map = get_spk_map(os.path.join(args.data, "waves-16k"))
+    # 使用硬编码，指定在哪个声音上进行微调，SJY在-i 10，辅助声音在-i 15。
+    speaker_map = {'SJY':10, 'auxiliary':15}
     fout = open(os.path.join(args.data, "speakers.txt"), 'w', encoding='utf-8')
     print(speaker_map, file=fout)
     fout.close()
