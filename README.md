@@ -2,7 +2,7 @@
 ## 这次更改的逻辑是：
 
 - bert_vits.json 中，"n_speakers" 共有几个设几个（默认是使用1个人的辅助训练数据，所以默认是2） ，"gin_channels" 保留为 256。
-- log_interval和eval_interval分别为10和100。
+- log_interval 和 eval_interval 分别为 10 和 100。
 - train.py中，L124行，加入加载预训练模型的代码：
 ```
 utils.load_model("AISHELL3_G.pth", net_g)
