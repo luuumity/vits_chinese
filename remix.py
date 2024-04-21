@@ -13,10 +13,10 @@ with open(train_path, 'r') as f:
     line = f.readline()
     while line:
         # 应该用search！因为在执行bert预处理之后的train.txt不再是以音频文件开头的了！应该用search。
-        if re.search(r"SJY1[0-9]+.wav", line):
-            auxiliary_data.append(line)
-        else:
+        if re.search(r"SJY[0-9]+.wav", line):
             real_data.append(line)
+        else:
+            auxiliary_data.append(line)
 
         line = f.readline()
 
@@ -31,3 +31,4 @@ with open(train_path, 'w') as f:
         f.write(item)
 
 print(f"现在train.txt中共有{len(data)}条记录。")
+
