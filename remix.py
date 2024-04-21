@@ -26,7 +26,7 @@ while len(real_data) <= len(auxiliary_data) :
 data = real_data + auxiliary_data
 # 重新shuffle
 random.shuffle(data)
-with open(train_path, 'r') as f:
+with open(train_path, 'w') as f:
     for item in data:
         f.write(item)
 
