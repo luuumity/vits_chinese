@@ -2,7 +2,7 @@
 import os
 import re
 
-folder_path = "./vits_data/waves-16k/SJY"
+folder_path = "./vits_data/waves-16k/auxiliary"
 
 # 获取文件夹中所有文件的列表
 file_list = os.listdir(folder_path)
@@ -19,7 +19,7 @@ L = len(file_list)
 with open(content, 'r') as f:
     line = f.readline()
     while line and i < L:
-        matches = re.match(r"(SJY[0-9]+.wav)(.*)", line)
+        matches = re.match(r"(auxiliary[0-9]+.wav)(.*)", line)
         if matches:
             name = matches.group(1)
             # print(name)
