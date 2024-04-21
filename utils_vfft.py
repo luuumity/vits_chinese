@@ -62,6 +62,7 @@ def load_checkpoint(checkpoint_path, model, optimizer=None):
     else:
         state_dict = model.state_dict()
     new_state_dict = {}
+    # vfft里的加载代码：
     for k, v in state_dict.items():
         try:
             if k == 'emb_g.weight':
