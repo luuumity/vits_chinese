@@ -1,7 +1,9 @@
 ## 本项目用于微调测试
 ## 这次更改的逻辑是：
 
-- bert_vits.json 中，"n_speakers" 共有几个设几个（默认是使用1个人的辅助训练数据，所以默认是2） ，"gin_channels" 保留为 256。
+- bert_vits.json 中，"n_speakers" 只能保留为 174（和底模型一样，设别的会有问题，无论用不用vfft的utils代码） ，"gin_channels" 保留为 256。
+- utils.py 是原版的，utils_vfft.py 是照vfft项目里改的。
+- 但尚且不知道 vfft 项目里为什么 n_speakers 可以修改为任意值？？？
 - log_interval 和 eval_interval 分别为 10 和 100。
 - train.py中，L124行，加入加载预训练模型的代码：
 ```
