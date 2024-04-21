@@ -1,3 +1,5 @@
+# 这是用了 vits-fast-fine-tuning 项目的 load 代码的。
+# 需要是从这里复制到 utils.py 里进行测试即可。（因为 utils 名字不能改）
 import os
 import glob
 import sys
