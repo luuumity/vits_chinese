@@ -48,8 +48,8 @@ def load_teacher(checkpoint_path, model):
         model.load_state_dict(new_state_dict)
     return model
 
-
-def load_checkpoint(checkpoint_path, model, optimizer=None):
+# 没加 drop_speaker_emb=False 导致 n_speakers = 2 时无法运行？？？
+def load_checkpoint(checkpoint_path, model, optimizer=None, drop_speaker_emb=False):
     assert os.path.isfile(checkpoint_path)
     checkpoint_dict = torch.load(checkpoint_path, map_location="cpu")
     iteration = checkpoint_dict["iteration"]
