@@ -2,16 +2,14 @@
 ## 这次更改的逻辑是：
 
 - bert_vits.json 中，"n_speakers" 只能保留为 174（和底模型一样，设别的会有问题，无论用不用vfft的utils代码） ，"gin_channels" 保留为 256。
-- utils.py 是原版的，utils_vfft.py 是照vfft项目里改的。
-- 但尚且不知道 vfft 项目里为什么 n_speakers 可以修改为任意值？？？
+- utils.py 是原版的，utils_vfft.py 是照vfft项目里改的。所以默认情况下是没用 vfft 代码的！（需要的话手动复制过去）
+- 但尚且不知道 vfft 项目里为什么 n_speakers 可以修改为任意值？？？（其他代码处有不同？）
 - log_interval 和 eval_interval 分别为 10 和 100。
 - train.py中，L124行，加入加载预训练模型的代码：
 ```
 utils.load_model("AISHELL3_G.pth", net_g)
 utils.load_model("AISHELL3_D.pth", net_g)
 ```
-- utils.py中，引用vits-fast-fine-tuning项目的方式，更改了load_checkpoint的代码。
-
 
 ## 材料准备：
 ### 下载预训练的vits模型（基于AISHELL多发言人训练）（放到项目目录下）
