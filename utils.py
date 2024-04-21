@@ -1,3 +1,4 @@
+# 这是没有用 vits-fast-fine-tuning 项目的 load 代码的。
 import os
 import glob
 import sys
