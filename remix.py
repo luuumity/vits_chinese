@@ -24,9 +24,10 @@ while len(real_data) <= len(auxiliary_data) :
     real_data += real_data
 
 data = real_data + auxiliary_data
+# 重新shuffle
 random.shuffle(data)
 with open(train_path, 'r') as f:
     for item in data:
         f.write(item)
 
-# 重新shuffle
+print(f"现在train.txt中共有{len(data)}条记录。")
