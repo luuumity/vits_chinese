@@ -2,6 +2,7 @@
 ## 主要更改的逻辑是：
 ```
 bert_vits.json 中，"n_speakers" 改为 0 ，"gin_channels" 改为 0。
+log_interval和eval_interval默认的太大了，分别改为10和100。
 train.py中，L124行，加入加载预训练模型的代码：
 utils.load_model("AISHELL3_G.pth", net_g)
 utils.load_model("AISHELL3_D.pth", net_g)
