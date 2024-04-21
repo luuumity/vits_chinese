@@ -43,6 +43,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--conf", dest="conf", required=True)
     parser.add_argument("--data", dest="data", required=True)
+    parser.add_argument("--val_len", dest="val_len", required=False)
     args = parser.parse_args()
 
     assert os.path.exists(os.path.join(args.data, "waves-16k"))
@@ -159,6 +160,11 @@ if __name__ == "__main__":
     # 默认以 1:4 的比例划分 valid 集 和 train 集。
     # 整除，向下取整，前 1/5 给 valid 集，后 4/5 给 train 集。
     Delimiter = len(scrips) // 5
+
+    # 如果有指定 val_len参数，就用它切割：
+    # 注：python中空值的关键词是 None，不是null。
+    if args.val_len is not None:
+        Delimiter = args.val_len
 
     fout = open(f'./filelists/valid.txt', 'w', encoding='utf-8')
     for item in scrips[:Delimiter]:
