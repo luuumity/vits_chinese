@@ -43,7 +43,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--conf", dest="conf", required=True)
     parser.add_argument("--data", dest="data", required=True)
-    parser.add_argument("--val_len", dest="val_len", required=False)
+    parser.add_argument("--val_len", dest="val_len", type = int,required=False) # 需要指定数据类型，否则被当作字符传进切片里不能用！
     args = parser.parse_args()
 
     assert os.path.exists(os.path.join(args.data, "waves-16k"))
