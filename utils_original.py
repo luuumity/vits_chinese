@@ -62,29 +62,15 @@ def load_checkpoint(checkpoint_path, model, optimizer=None):
     else:
         state_dict = model.state_dict()
     new_state_dict = {}
-    
-    # 换用vfft项目的代码：
+            
+    # 原代码：
     for k, v in state_dict.items():
         try:
-            if k == 'emb_g.weight':
-                if drop_speaker_emb:
-                    new_state_dict[k] = v
-                    continue
-                v[:saved_state_dict[k].shape[0], :] = saved_state_dict[k]
-                new_state_dict[k] = v
-            else:
-                new_state_dict[k] = saved_state_dict[k]
+            new_state_dict[k] = saved_state_dict[k]
         except:
             logger.info("%s is not in the checkpoint" % k)
             new_state_dict[k] = v
             
-    # 原代码：
-    # for k, v in state_dict.items():
-    #     try:
-    #         new_state_dict[k] = saved_state_dict[k]
-    #     except:
-    #         logger.info("%s is not in the checkpoint" % k)
-    #         new_state_dict[k] = v
     if hasattr(model, "module"):
         model.module.load_state_dict(new_state_dict)
     else:
