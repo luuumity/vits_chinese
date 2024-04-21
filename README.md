@@ -1,7 +1,7 @@
 ## 本项目用于微调测试
 ## 这次更改的逻辑是：
 
-- bert_vits.json 中，"n_speakers" 只能保留为 174（和底模型一样，设别的会有问题，无论用不用vfft的utils代码） ，"gin_channels" 保留为 256。
+- bert_vits.json 中，"n_speakers" 只能保留为 174（和底模型一样，设别的会有问题，无论用不用vfft的utils代码） ，"gin_channels" 保留为 256。不过这到底是保留了几个说话人？？？是只覆盖了头2个说话人吗？
 - utils.py 是原版的，utils_vfft.py 是照vfft项目里改的。所以默认情况下是没用 vfft 代码的！（需要的话手动复制过去）
 - 但尚且不知道 vfft 项目里为什么 n_speakers 可以修改为任意值？？？（其他代码处有不同？）
 - log_interval 和 eval_interval 分别为 10 和 100。
