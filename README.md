@@ -1,7 +1,7 @@
 ## 本项目用于微调测试
 ## 这次更改的逻辑是：
 
-- bert_vits.json 中，"n_speakers" 有几个设几个（包括辅助数据和自己真实数据） ，"gin_channels" 保留为 256。
+- bert_vits.json 中，"n_speakers" 共有几个设几个（默认是使用1个人的辅助训练数据，所以默认是2） ，"gin_channels" 保留为 256。
 - log_interval和eval_interval分别为10和100。
 - train.py中，L124行，加入加载预训练模型的代码：
 ```
