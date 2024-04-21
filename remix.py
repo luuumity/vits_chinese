@@ -6,8 +6,8 @@ import random
 real_data = []
 auxiliary_data = []
 
-# 无需绝对路径？
-train_path = "filelists/train.txt"
+# 使用./的话就无需绝对路径？
+train_path = "./filelists/train.txt"
 
 with open(train_path, 'r') as f:
     line = f.readline()
