@@ -15,6 +15,8 @@ parser = argparse.ArgumentParser(description='Inference code for bert vits model
 parser.add_argument('-c', '--config', type=str, required=True)
 parser.add_argument('-m', '--model', type=str, required=True)
 parser.add_argument('-i', '--index', type=int, required=True)
+parser.add_argument('-n', '--noise_scale', type=float, default = 0.5, required=False)
+parser.add_argument('-l', '--noise_scale', type=float, default = 1.0, required=False)
 args = parser.parse_args()
 
 def save_wav(wav, path, rate):
@@ -63,7 +65,7 @@ if __name__ == "__main__":
             x_tst = torch.LongTensor(input_ids).unsqueeze(0).to(device)
             x_tst_lengths = torch.LongTensor([len(input_ids)]).to(device)
             x_tst_prosody = torch.FloatTensor(char_embeds).unsqueeze(0).to(device)
-            audio = net_g.infer(x_tst, x_tst_lengths, x_tst_prosody, sid=sid, noise_scale=0.5,
-                                length_scale=1)[0][0, 0].data.cpu().float().numpy()
+            audio = net_g.infer(x_tst, x_tst_lengths, x_tst_prosody, sid=sid, noise_scale=args.noise_scale,
+                                length_scale=args.noise_scale)[0][0, 0].data.cpu().float().numpy()
         save_wav(audio, f"./vits_infer_out/bert_vits_{n}.wav", hps.data.sampling_rate)
     fo.close()
