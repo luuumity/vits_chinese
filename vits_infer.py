@@ -16,7 +16,7 @@ parser.add_argument('-c', '--config', type=str, required=True)
 parser.add_argument('-m', '--model', type=str, required=True)
 parser.add_argument('-i', '--index', type=int, required=True)
 parser.add_argument('-n', '--noise_scale', type=float, default = 0.5, required=False)
-parser.add_argument('-l', '--noise_scale', type=float, default = 1.0, required=False)
+parser.add_argument('-l', '--length_scale', type=float, default = 1.0, required=False)
 args = parser.parse_args()
 
 def save_wav(wav, path, rate):
