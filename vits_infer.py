@@ -66,6 +66,6 @@ if __name__ == "__main__":
             x_tst_lengths = torch.LongTensor([len(input_ids)]).to(device)
             x_tst_prosody = torch.FloatTensor(char_embeds).unsqueeze(0).to(device)
             audio = net_g.infer(x_tst, x_tst_lengths, x_tst_prosody, sid=sid, noise_scale=args.noise_scale,
-                                length_scale=args.noise_scale)[0][0, 0].data.cpu().float().numpy()
+                                length_scale=args.length_scale)[0][0, 0].data.cpu().float().numpy()
         save_wav(audio, f"./vits_infer_out/bert_vits_{n}.wav", hps.data.sampling_rate)
     fo.close()
