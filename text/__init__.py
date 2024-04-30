@@ -13,6 +13,9 @@ def cleaned_text_to_sequence(cleaned_text):
     Returns:
       List of integers corresponding to the symbols in the text
     """
+    # 这样可以像vfft项目一样看到 cleaned_text 和它的长度。
+    print(cleaned_text)
+    print(f" length:{len(cleaned_text)}")    
     sequence = [_symbol_to_id[symbol] for symbol in cleaned_text.split()]
     return sequence
 
