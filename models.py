@@ -652,7 +652,10 @@ class SynthesizerTrn(nn.Module):
             g = None
 
         # 注：我之前没注意，其实bert-vits分支下的 Scholastic Duration Predictor 好像的确是被去掉了的，但aishell3分支的不是，这里的有点掩耳盗铃，设了False但每个地方用的都是sdp。
-        # 但是如果没有手动调节音素发音长度的需求的话，infer时可以尝试用dp而不是sdp？
+        # 但是如果没有手动调节音素发音长度的需求的话，可以尝试用dp代替sdp。
+        # 但若要用dp，必须在训练阶段也用dp！否则会发现模型存档点中没有dp所需的权重。
+        # 而一个模型要么是用dp的，要么是用sdp的，如果想2个都用用试试，需要训练2个模型出来。
+        # 而且改为使用dp的话，对照vfft代码，至少有3处要改（或者像vfft一样写成判断分支）。
         # logw = self.dp(x, x_mask, g=g)
         logw = self.dp(x, x_mask, g=g, reverse=True, noise_scale=0.6)
         w = torch.exp(logw) * x_mask * length_scale
