@@ -651,6 +651,8 @@ class SynthesizerTrn(nn.Module):
         else:
             g = None
 
+        # 注：我之前没注意，其实bert-vits分支下的 Scholastic Duration Predictor 好像的确是被去掉了的，但aishell3分支的不是，这里的有点掩耳盗铃，设了False但每个地方用的都是sdp。
+        # 但是如果没有手动调节音素发音长度的需求的话，infer时可以尝试用dp而不是sdp？
         # logw = self.dp(x, x_mask, g=g)
         logw = self.dp(x, x_mask, g=g, reverse=True, noise_scale=0.6)
         w = torch.exp(logw) * x_mask * length_scale
