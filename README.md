@@ -16,12 +16,6 @@ https://colab.research.google.com/drive/1RdmDtmroJd6kDLrh5ic4e9mgweye1Xa4?usp=sh
 
 ## 一些注意事项：
 
-### 关于底模型推理测试：
--i 为发音人序号，取值范围：0 ~ 173
-```
-python vits_infer.py -c configs/bert_vits.json -m AISHELL3_G.pth -i 6
-```
-
 ### 关于数据预处理：
 
 #### 0.自己的微调数据集放在 data/xxx/ 中（xxx为角色名，我这里是SJY）
