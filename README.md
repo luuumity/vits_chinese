@@ -2,11 +2,11 @@
 ## 本分支不需要auxiliary data，提供20条～40条5s音频数据，训练40min左右就可以得到不错的音色克隆效果。建议录音放慢语速。
 
 ```
-bert_vits.json 中，"n_speakers" 改为 0 ，"gin_channels" 改为 0。
-log_interval和eval_interval默认的太大了，分别改为10和100。
-train.py中，L124行，加入加载预训练模型的代码：
-utils.load_model("AISHELL3_G.pth", net_g)
-utils.load_model("AISHELL3_D.pth", net_g)
+- bert_vits.json 中，"n_speakers" 改为 0 ，"gin_channels" 改为 0。
+- log_interval和eval_interval默认的太大了，分别改为10和100。
+- train.py中，L124行，加入了加载预训练模型的代码：
+- utils.load_model("AISHELL3_G.pth", net_g)
+- utils.load_model("AISHELL3_D.pth", net_g)
 ```
 
 ## 材料准备：
