@@ -527,7 +527,9 @@ class SynthesizerTrn(nn.Module):
         upsample_kernel_sizes,
         n_speakers=0,
         gin_channels=0,
-        use_sdp=False,
+        # 默认情况下是True，是用 Stochastic Duration Predictor 的，即原VITS论文中可以用 noise_scale_w 控制音素语速那个。但可能不太稳定。
+        # 一个模型不能同时拥有 dp 和 sdp，如果都要尝试，要分2次训练。
+        use_sdp=True,
         **kwargs
     ):
 
@@ -583,9 +585,17 @@ class SynthesizerTrn(nn.Module):
         self.flow = ResidualCouplingBlock(
             inter_channels, hidden_channels, 5, 1, 4, gin_channels=gin_channels
         )
-        self.dp = StochasticDurationPredictor(
-            hidden_channels, 192, 3, 0.5, 4, gin_channels=gin_channels
-        )
+        
+        # 用 dp 或 sdp：
+        if self.use_sdp:
+            self.dp = StochasticDurationPredictor(
+                hidden_channels, 192, 3, 0.5, 4, gin_channels=gin_channels
+            )
+        else:
+            self.dp = DurationPredictor(
+                hidden_channels, 256, 3, 0.5, gin_channels=gin_channels
+            )
+            
         if n_speakers > 1:
             self.emb_g = nn.Embedding(n_speakers, gin_channels)
 
@@ -623,13 +633,17 @@ class SynthesizerTrn(nn.Module):
                 .detach()
             )
 
-        # duration
+        # duration 
+        # 用 dp 或 sdp：
         w = attn.sum(2)
-        # logw_ = torch.log(w + 1e-6) * x_mask
-        # logw = self.dp(x, x_mask, g=g)
-        # l_length = torch.sum((logw - logw_) ** 2, [1, 2]) / torch.sum(x_mask)  # for averaging
-        l_length = self.dp(x, x_mask, w, g=g)
-        l_length = l_length / torch.sum(x_mask)
+        if self.use_sdp:
+            l_length = self.dp(x, x_mask, w, g=g)
+            l_length = l_length / torch.sum(x_mask)
+        else:
+            logw_ = torch.log(w + 1e-6) * x_mask
+            logw = self.dp(x, x_mask, g=g)
+            l_length = torch.sum((logw - logw_) ** 2, [1, 2]) / torch.sum(x_mask)  # for averaging
+        
         # expand prior
         m_p = torch.matmul(attn.squeeze(1), m_p.transpose(1, 2)).transpose(1, 2)
         logs_p = torch.matmul(attn.squeeze(1), logs_p.transpose(1, 2)).transpose(1, 2)
@@ -656,8 +670,10 @@ class SynthesizerTrn(nn.Module):
         # 但若要用dp，必须在训练阶段也用dp！否则会发现模型存档点中没有dp所需的权重。
         # 而一个模型要么是用dp的，要么是用sdp的，如果想2个都用用试试，需要训练2个模型出来。
         # 而且改为使用dp的话，对照vfft代码，至少有3处要改（或者像vfft一样写成判断分支）。
-        # logw = self.dp(x, x_mask, g=g)
-        logw = self.dp(x, x_mask, g=g, reverse=True, noise_scale=0.6)
+        if self.use_sdp:
+            logw = self.dp(x, x_mask, g=g, reverse=True, noise_scale=0.6)
+        else:
+            logw = self.dp(x, x_mask, g=g)
         w = torch.exp(logw) * x_mask * length_scale
         w_ceil = torch.ceil(w + 0.5)
         y_lengths = torch.clamp_min(torch.sum(w_ceil, [1, 2]), 1).long()
