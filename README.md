@@ -1,5 +1,5 @@
 ## 本项目是基于BERT-VITS的音色克隆（微调）
-## 本分支不需要auxiliary data，提供20条～40条5s音频数据，训练40min左右就可以得到不错的音色克隆效果。建议录音放慢语速。
+### 本分支不需要auxiliary data，提供20条～40条5s音频数据，训练40min左右就可以得到不错的音色克隆效果。建议录音放慢语速。
 
 ```
 - bert_vits.json 中，"n_speakers" 改为 0 ，"gin_channels" 改为 0。
