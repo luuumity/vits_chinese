@@ -62,8 +62,7 @@ SJY002.wav 我们必须与其他生物共同分享我们的地球。
 #### 5.数据读取测试。
 
 ### 关于训练：
-#### 虽然说在BERT-VITS中似乎使用Duration Predictor（dp）会效果更好，但本项目无法使用 Duration Predictor（dp），因为AISHELL3预训练模型用的就是 Scholastic Duration Predictor（sdp）。
-#### 如果微调时想用dp，加载底模型权重时就会报错。
+#### 虽然说在BERT-VITS中似乎使用Duration Predictor（dp）会效果更好，但本项目无法使用 Duration Predictor（dp），因为AISHELL3预训练模型用的就是 Scholastic Duration Predictor（sdp）。如果微调时想用dp，加载底模型权重时就会报错。
 
 ### 关于推理：
 #### 1.可以修改 length_scale、noise_scale_w、noise_scale 参数控制生成的音频总语速、单个音素语速、变化等。
