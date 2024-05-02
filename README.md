@@ -10,7 +10,7 @@
 - 无法使用 Duration Predictor (dp) 进行训练或推理，因为AISHELL3底模型用的就是 Stochastic Duration Predictor (sdp)。
 ```
 
-## 使用该笔记本在Colab上进行测试：[BERT_vits_without_auxiliary(new)](https://github.com/luuumity/vits_chinese/blob/bert_vits_aishell3/BERT_vits_without_auxiliary(new).ipynb)
+## 在Colab上进行测试：[BERT_vits_without_auxiliary(new)](https://colab.research.google.com/drive/1RdmDtmroJd6kDLrh5ic4e9mgweye1Xa4?usp=sharing)，或查看本仓库中的BERT_vits_without_auxiliary(new).ipynb笔记本。
 ## 生成的音频样例：[📎Attached Audios](https://valuable-odometer-38c.notion.site/Attached-Audios-ce736be5be6c46cc951b635d6d81c004?pvs=4)
 
 <br></br>
