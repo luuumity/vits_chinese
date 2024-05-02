@@ -50,8 +50,7 @@ def load_teacher(checkpoint_path, model):
         model.load_state_dict(new_state_dict)
     return model
 
-# 少复制了 drop_speaker_emb=False 这个形参，但不是它导致的 n_speakers = 2 时无法运行。。。
-# 那到底为什么那个项目能改 n_speakers 但这个不能改呢？
+# 不要忘记比原代码多了一个 drop_speaker_emb=False 这个形参！
 def load_checkpoint(checkpoint_path, model, optimizer=None, drop_speaker_emb=False):
     assert os.path.isfile(checkpoint_path)
     checkpoint_dict = torch.load(checkpoint_path, map_location="cpu")
