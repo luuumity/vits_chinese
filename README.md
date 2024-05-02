@@ -1,5 +1,6 @@
-## 本项目用于微调测试
-## 主要更改的逻辑是：
+## 本项目是基于BERT-VITS的音色克隆（微调）
+## 本分支不需要auxiliary data，在提供20条～40条5s音频数据，训练40min左右的条件下就能得到不错的音色克隆效果。建议录音放慢语速。
+
 ```
 bert_vits.json 中，"n_speakers" 改为 0 ，"gin_channels" 改为 0。
 log_interval和eval_interval默认的太大了，分别改为10和100。
