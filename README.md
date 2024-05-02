@@ -33,8 +33,7 @@ python vits_infer.py -c configs/bert_vits.json -m AISHELL3_G.pth -i 6
 
 - 原始文本请放在input.txt，默认输出到vits_data/labels.txt。
 
-- 原始文本样式（input.txt）
-⚠️注：原始文本请按照这个格式写： ”角色名(仅含字母) 数字 .wav  内容(可含标点符号)“
+- 原始文本样式（input.txt）： ”角色名(仅含字母) 数字 .wav  内容(可含标点符号)“
 ```
 SJY001.wav 一帆风顺虽然令人羡慕，可是有的时候逆水行舟更让人钦佩。
 SJY002.wav 我们必须与其他生物共同分享我们的地球。
