@@ -7,7 +7,7 @@
 - train.py中，L124行，加入了加载预训练模型的代码：
 - utils.load_model("AISHELL3_G.pth", net_g)
 - utils.load_model("AISHELL3_D.pth", net_g)
-- 无法使用 
+- 无法使用 Duration Predictor (dp) 进行训练或推理，因为AISHELL3底模型用的就是 Stochastic Duration Predictor (sdp)。
 ```
 
 ## 测试请使用Colab：
