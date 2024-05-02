@@ -66,5 +66,5 @@ SJY002.wav 我们必须与其他生物共同分享我们的地球。
 #### 如果微调时想用dp，加载底模型权重时就会报错。
 
 ### 关于推理：
-#### 可以修改 length_scale、noise_scale_w、noise_scale 参数控制生成的音频总语速、单个音素语速、变化等。
-#### 如果发现有拼音标注不正确的，请在 text/pinyin-local.txt 中手动标注上正确的读音，如“一帆风顺”、“似”。
+#### 1.可以修改 length_scale、noise_scale_w、noise_scale 参数控制生成的音频总语速、单个音素语速、变化等。
+#### 2.如果发现有拼音标注不正确的，请在 text/pinyin-local.txt 中手动标注上正确的读音，如“一帆风顺”、“似”。
