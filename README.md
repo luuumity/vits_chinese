@@ -10,7 +10,7 @@
 - 无法使用 Duration Predictor (dp) 进行训练或推理，因为AISHELL3底模型用的就是 Stochastic Duration Predictor (sdp)。
 ```
 
-## 使用该笔记本在Colab上进行测试：![tttt](https://github.com/luuumity/vits_chinese/blob/bert_vits_aishell3/BERT_vits_without_auxiliary(new).ipynb)
+## 使用该笔记本在Colab上进行测试：[BERT_vits_without_auxiliary(new)](https://github.com/luuumity/vits_chinese/blob/bert_vits_aishell3/BERT_vits_without_auxiliary(new).ipynb)
 <br></br>
 
 ## 一些注意事项：
