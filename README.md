@@ -16,7 +16,7 @@ https://colab.research.google.com/drive/1RdmDtmroJd6kDLrh5ic4e9mgweye1Xa4?usp=sh
 
 ## 一些注意事项：
 
-### 关于数据预处理：
+### 一、关于数据预处理：
 
 #### 0.自己的微调数据集放在 data/xxx/ 中（xxx为角色名，我这里是SJY）
 #### 0.预处理前应先手动创建 vits_data/ 目录
@@ -55,9 +55,9 @@ SJY002.wav 我们必须与其他生物共同分享我们的地球。
 
 #### 5.数据读取测试。
 
-### 关于训练：
+### 二、关于训练：
 #### 虽然说在BERT-VITS中似乎使用Duration Predictor（dp）会效果更好，但本项目无法使用 Duration Predictor（dp），因为AISHELL3预训练模型用的就是 Scholastic Duration Predictor（sdp）。如果微调时想用dp，加载底模型权重时就会报错。
 
-### 关于推理：
+### 三、关于推理：
 #### 1.可以修改 length_scale、noise_scale_w、noise_scale 参数控制生成的音频总语速、单个音素语速、变化等。
 #### 2.如果发现有拼音标注不正确的，请在 text/pinyin-local.txt 中手动标注上正确的读音，如“一帆风顺”、“似”。
