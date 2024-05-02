@@ -63,4 +63,4 @@ SJY002.wav 我们必须与其他生物共同分享我们的地球。
 ### 三、关于推理：
 #### 1.可以修改 length_scale、noise_scale_w、noise_scale 参数控制生成的音频总语速、单个音素语速、变化等。
 #### 2.如果发现有拼音标注不正确的，请在 text/pinyin-local.txt 中手动标注上正确的读音，如“一帆风顺”、“似”。
-#### 3.如果想要对比有没有BERT的差别，使用vits_infer.py和vits_infer_no_bert.py分别推理一次即可。
+#### 3.如果想要看看没有BERT是什么样子，使用vits_infer_no_bert.py推理即可。不过测试的感觉是，区别很小很微妙，而且个别句子可能no_bert听起来还更好？
