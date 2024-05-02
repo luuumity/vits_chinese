@@ -529,7 +529,7 @@ class SynthesizerTrn(nn.Module):
         gin_channels=0,
         # 默认情况下是True，是用 Stochastic Duration Predictor 的，即原VITS论文中可以用 noise_scale_w 控制音素语速那个。但可能不太稳定。
         # 一个模型不能同时拥有 dp 和 sdp，如果都要尝试，要分2次训练。
-        use_sdp=True,
+        use_sdp = True,
         **kwargs
     ):
 
@@ -552,6 +552,9 @@ class SynthesizerTrn(nn.Module):
         self.segment_size = segment_size
         self.n_speakers = n_speakers
         self.gin_channels = gin_channels
+
+        # 需要在这里添加一个这个，否则会说找不到 use_sdp 这个attribute。。。
+        self.use_sdp = use_sdp
 
         self.enc_p = TextEncoder(
             n_vocab,
